@@ -11,7 +11,7 @@ gas = types.count(".") * w
 water = types.count("~") * w
 print("#" * (h + 2))
 for i in range(0, w * h, h):
-    if i < gas:
+    if i + h <= gas:
         print(f"#{'.' * h}#")
     else:
         print(f"#{'~' * h}#")
