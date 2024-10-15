@@ -1,0 +1,7 @@
+:cat print("cat")
+:dog print("dog")
+cat
+dog
+cat
+cat
+quit "cats: {}; dogs: {}"

@@ -1,0 +1,4 @@
+:sin x cos(x)+10
+sin pi
+sin pi/2
+quit "{}, {}"

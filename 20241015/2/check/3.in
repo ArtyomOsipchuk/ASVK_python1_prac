@@ -1,0 +1,2 @@
+:test x y z v x*y+z-v
+quit "0 tests yet... {} {}"
