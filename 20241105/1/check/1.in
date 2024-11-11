@@ -1,0 +1,9 @@
+a, b, c = Omnibus(), Omnibus(), Omnibus()
+a.a = False
+a.b = b.b = b
+a.c = c.c = True
+print(a.a, a.b, a.c, b.b, c.c)
+del b.b
+del a.c
+b.b = 12
+print(a.a, a.b, b.b, c.c)

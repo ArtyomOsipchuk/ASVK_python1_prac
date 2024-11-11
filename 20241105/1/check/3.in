@@ -1,0 +1,5 @@
+a, b = Omnibus(), Omnibus()
+a.i = a.j = a.k = True
+del a.i
+b.i = False
+print(a.i, b.i, a.j, a.k)
