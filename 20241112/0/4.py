@@ -1,0 +1,10 @@
+C = type("C", (), {"a": 100500, "fun": lambda self: self.a})
+print(C)
+c = C()
+print(c.fun())
+print(type(c))
+print(type(C))
+
+C = type("C", (), {"a": 100500, "__init__": lambda self, val: setattr(self, "a", val), "fun": lambda self: self.a})
+c = C(2)
+print(c.a)
