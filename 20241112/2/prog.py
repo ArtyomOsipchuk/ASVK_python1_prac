@@ -8,8 +8,6 @@ class BadTriangle(Exception):
 def triangleSquare():
     inStr = input()
     coords = eval(inStr)
-    if len(coords) != 3:
-        raise InvalidInput()
     for i in coords:
         if type(i) != tuple:
             raise InvalidInput()
@@ -29,7 +27,8 @@ while True:
         print("Not a triangle")
     except Exception:
         print("Invalid input")
+        continue
     else:
-        print(S)
+        print(f"{S:.2f}")
         break
 

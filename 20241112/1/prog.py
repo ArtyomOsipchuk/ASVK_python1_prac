@@ -10,12 +10,9 @@ class DivStr(collections.UserString):
             yield self.data[i: i + le // n]
 
     def __mod__(self, n):
+        if len(self.data) % n == 0:
+            return DivStr()
         return DivStr(self.data[-1 * (len(self.data) % n):])
 
-a = DivStr("XcDfQWEasdERTdfgRTY")
-print(* a // 4)
-print(a % 4)
-print(* a % 10 // 3)
-print(a.lower() % 3)
-print(* a[1:7] // 3)
-print(a % 5 + DivStr() + a % 6)
+import sys
+exec(sys.stdin.read())
