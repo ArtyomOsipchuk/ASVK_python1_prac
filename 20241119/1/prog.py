@@ -10,3 +10,7 @@ def objcount(cls):
             #super().__del__(*args)
             self.__class__.counter -= 1
     return C
+
+import sys
+
+exec(sys.stdin.read())

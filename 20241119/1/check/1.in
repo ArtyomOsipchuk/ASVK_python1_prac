@@ -1,5 +1,5 @@
 @objcount
-class C:
+class D:
     pass
 
 c, d, e = C(), C(), C()
