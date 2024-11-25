@@ -1,10 +1,8 @@
 @objcount
-class C:
+class C(list):
     pass
 
-c = C()
-print(C.counter)
-c = 42
+c = C("abc")
 print(C.counter)
 del c
 print(C.counter)

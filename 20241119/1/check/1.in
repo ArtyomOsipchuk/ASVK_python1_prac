@@ -1,8 +1,14 @@
 @objcount
 class C:
-    pass
+    def __init__(self, n):
+        self.n = n
 
-c, d, e = C(), C(), C()
+    def __del__(self, obj):
+        print(self.n)
+        del self
+
+
+c, d, e = C(11), C(22), C(33)
 print(C.counter)
 del d
 print(C.counter)

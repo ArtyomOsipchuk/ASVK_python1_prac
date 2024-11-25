@@ -1,9 +1,9 @@
 @objcount
-class C:
+class C(float):
     pass
 
 c, d, e, f, g = C(), C(), C(), C(), C()
-print(c.counter)
+print(c.real, c.counter)
 del c
 print(d.counter)
 del d

@@ -6,9 +6,10 @@ def objcount(cls):
             super().__init__(*args, **kwargs)
             self.__class__.counter += 1
         
-        def __del__(self, *args):
+        def __del__(self):
             self.__class__.counter -= 1
-            del self
+            if hasattr(super(), "__del__"):
+                super().__del__(self)
     return C
 
 import sys
