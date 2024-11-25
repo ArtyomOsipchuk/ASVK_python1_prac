@@ -2,9 +2,9 @@
 class C:
     pass
 
-c, d, e = C(), C(), C()
+c = C()
 print(C.counter)
-del d
+c = 42
 print(C.counter)
-e = 42
+del c
 print(C.counter)

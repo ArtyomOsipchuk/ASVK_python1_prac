@@ -1,0 +1,18 @@
+class C:
+    num = Num()
+
+print(C().num)
+c, d = C(), C()
+c.num = 2
+d.num = 15
+print(c.num, d.num)
+print(c.num * d.num)
+c.num = "__len__"
+d.num = [1, 2, 3]
+print(c.num, d.num)
+print(c.num + d.num)
+d.num = {"a": "a", "b": "b"}
+print(c.num, d.num)
+print(c.num + d.num)
+del d.num
+print(c.num, d.num)

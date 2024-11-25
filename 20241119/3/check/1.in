@@ -1,0 +1,9 @@
+wo = Vowel(i=1, y=2, a=3)
+print(wo, wo.full)
+based = wo.full
+try:
+	wo.full = 12
+except AttributeError:
+	print("Catch'ya!")
+if wo.full == based:
+	print("Nothing changed")

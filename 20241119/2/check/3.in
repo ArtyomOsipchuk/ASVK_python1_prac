@@ -1,0 +1,15 @@
+class C:
+    num = Num()
+
+print(C().num)
+c, d = C(), C()
+c.num = 15.005
+d.num = 12.5
+print(c.num, d.num)
+print(c.num + d.num)
+d.num = C()
+print(c.num, d.num)
+print(c.num + d.num)
+del d.num
+print(c.num, d.num)
+

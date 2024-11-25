@@ -1,0 +1,20 @@
+class C:
+    num = Num()
+
+class D:
+    num = Num()
+
+print(C().num)
+b, c, d = C(), C(), D()
+c.num = d.num = 2
+print(b.num, c.num, d.num)
+print(b.num + c.num + d.num)
+c.num = "testtesttest"
+print(b.num, c.num, d.num)
+print(b.num + c.num + d.num)
+d.num = range(10, 1000, 7)
+print(b.num, c.num, d.num)
+print(b.num + c.num + d.num)
+del c.num
+print(b.num, c.num, d.num)
+print(b.num + c.num + d.num)

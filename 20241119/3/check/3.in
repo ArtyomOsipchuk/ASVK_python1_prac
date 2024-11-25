@@ -1,0 +1,9 @@
+wo = Vowel(i=1, y=2, a=3)
+try:
+	wo.b = 15
+except AttributeError:
+	print("Catch'ya! Slots)")
+try:
+	print(wo.b)
+except AttributeError:
+	print("Catch'ya! Slots)))")

@@ -1,0 +1,10 @@
+wo = Vowel(i=1, y=2, a=3)
+print(wo, wo.answer)
+try:
+	wo.answer = 15
+except AttributeError:
+	print("Catch'ya! Only answer is 42!")
+try:
+	print(wo.o)
+except AttributeError:
+	print("Catch'ya! No 'o' here")
