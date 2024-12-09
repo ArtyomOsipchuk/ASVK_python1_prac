@@ -1,0 +1,10 @@
+  Эта программа глупенькая
+        store 1 i
+	store 100 n
+
+loop:   add i res res
+        add i 1 i
+	div n i res
+     	
+        ifle i n silly_label
+        out res

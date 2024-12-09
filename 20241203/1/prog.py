@@ -1,15 +1,18 @@
-class dump(tuple):
-    pass
+class dump(type):
+    def __new__(cls, name, bases, attrs):
+        for key, value in attrs.items():
+            if callable(value):
+                method = value
 
+                def wrapper(name, method):
+                    def new_method(self, *args, **kwargs):
+                        print(f"{name}: {args}, {kwargs}")
+                        return method(self, *args, **kwargs)
+                    return new_method
+                
+                attrs[key] = wrapper(key, method)
+        return super().__new__(cls, name, bases, attrs)
 
+import sys
 
-class C(metaclass=dump):
-    def __init__(self, val):
-        self.val = val
-
-    def add(self, other, another=None):
-        return self.val + other + (another or self.val)
-
-c = C(10)
-print(c.add(9))
-print(c.add(9, another=10))
+exec(sys.stdin.read())

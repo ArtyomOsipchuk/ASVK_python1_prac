@@ -1,15 +1,9 @@
-  Эта программа вычисляет e
-        store 100 i
-        store 1 I
-        store 1 f
+  Эта программа вычисляет сумму первых 10 чисел :)
+        store 10 n
+        store 1 i
 
-  Переменные e и n коварно не объявляем — в них по умолчанию 0
-
-loop:   div I f a
-        add e a e
-        add n I n
-        mul f n f
-        
-        sub i I i
-        ifge i I loop
-        out e
+loop:   add i res res
+        add i 1 i
+     	
+        ifle i n loop
+        out res

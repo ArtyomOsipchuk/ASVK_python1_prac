@@ -1,0 +1,11 @@
+class B(metaclass=dump):
+    self._book = "BOOK"
+    def __init__(self):
+	print("init?!")
+
+    def add(self, other):
+        return self._book + other
+
+c = C()
+print(c.add("COOL-BOOK"))
+print(c.add("COOLEST-BOOK"))
