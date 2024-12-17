@@ -33,4 +33,4 @@ async def main():
     task3.cancel()
     task4.cancel()
 
-#asyncio.run(main())
+asyncio.run(main())
