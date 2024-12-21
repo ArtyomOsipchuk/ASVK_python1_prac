@@ -3,43 +3,61 @@ import random
 
 async def merge(A, B, start, middle, finish, event_in1, event_in2, event_out):
     await event_in1.wait()
-    await event_in2.wait()
-    B[start:finish] = A[start:middle] + A[middle:finish]
+    if middle < finish:
+        await event_in2.wait()
+    i, j = start, middle
+    b = start
+    while i < middle and j < finish:
+        if A[i] <= A[j]:
+            B[b] = A[i]
+            i += 1
+        else:
+            B[b] = A[j]
+            j += 1
+        b += 1
+
+    while i < middle:
+        B[b] = A[i]
+        i += 1
+        b += 1
+    while j < finish:
+        B[b] = A[j]
+        j += 1
+        b += 1
     event_out.set()
 
 async def mtasks(A):
+    AA = A[:]
     N = len(A)
     B = [0] * N
     tasks = []
-    events_in1 = [asyncio.Event() for i in range(N)]
-    events_in2 = [asyncio.Event() for i in range(N)]
-    events_out = [asyncio.Event() for i in range(N)]
+    events = []
     for i in range(N):
-        tasks.append(merge(A, B, i, i + 1, min(i + 2, N), events_in1[i], events_in2[i], events_out[i]))
-        await events_out[i].wait()
-    
-    for length in range(1, N, length * 2):
-        for i in range(0, N, length * 2):
-            mid = min(i + length, N)
-            end = min(i + length * 2, N)
-            tasks.append(merge(A, B, i, mid, end, events_in1[length // 2], events_in2[length // 2], events_out[length // 2]))
-            await events_out[length // 2].wait()
-        A[:N] = B[:N]
+        event = asyncio.Event()
+        event.set()
+        events.append(event)
+    step = 1
+    backwards = True
+    while step < N:
+        events_out = []
+        for start in range(0, N, 2 * step):
+            ev = asyncio.Event()
+            events_out.append(ev)
+            middle = min(start + step, N)
+            if middle < N:
+                ev2 = events[middle // step]
+            else:
+                ev2 = asyncio.Event()
+            if backwards:
+                tasks.append(merge(AA, B, start, middle, min(start + 2 * step, N), events[start // step], ev2, ev))
+            else:
+                tasks.append(merge(B, AA, start, middle, min(start + 2 * step, N), events[start // step], ev2, ev))
+        backwards = not backwards
+        events = events_out
+        step *= 2
 
-    return tasks, B
+    return tasks, AA
 
-import asyncio
 
-async def main(A):
-    tasks, B = await mtasks(A)
-    print(len(tasks))
-    random.shuffle(tasks)
-    await asyncio.gather(*tasks)
-    return B
-
-random.seed(1337)
-A = random.choices(range(10), k=33)
-B = asyncio.run(main(A))
-print(*A)
-print(*B)
-print(B == sorted(A))
+import sys
+exec(sys.stdin.read())
