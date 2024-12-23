@@ -1,9 +1,9 @@
   Эта программа вычисляет сумму первых 10 чисел :)
         store 10 n
         store 1 i
+	store 1 j
 
 loop:   add i res res
-        add i 1 i
-     	
+     	out i
+        add j i i
         ifle i n loop
-        out res

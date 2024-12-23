@@ -1,0 +1,7 @@
+class C(metaclass=dump):
+    def func(self, a, b=12):
+        return a / b
+
+c = C()
+print(c.func(1, 2))
+print(c.func(1))

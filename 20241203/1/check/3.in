@@ -1,0 +1,17 @@
+class C(metaclass=dump):
+    def __init__(self, val):
+        self.val = val
+    
+    def a(self, other):
+        return self.val + other
+    
+    def b(self, other=15, another=None):
+        return self.val + other + (another or self.val)
+
+    def c(self):
+        return self.val
+
+c = C(10)
+print(c.a(9))
+print(c.b(other=9, another=10))
+print(c.c())

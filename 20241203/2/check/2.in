@@ -1,7 +1,7 @@
   Эта программа выводит "Омномном"
-        store a 1.0
-        store b 2.0
-	store c 100
+        store 1.0 a
+        store 2.0 b
+	store 100 c
 loop:	add a b a
         out a
 	out b
