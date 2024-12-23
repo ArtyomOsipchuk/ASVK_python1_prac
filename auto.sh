@@ -3,7 +3,7 @@ HIM="Теслюк Никита"
 BASE_DIR=$(pwd)
 find "$BASE_DIR" -type d -name "check" | grep "2024" | while read -r CHECK_DIR; do
     FILE_PATH="$CHECK_DIR/remote"
-    RELATIVE_PATH=$(realpath --relative-to="$BASE_DIR" "$CHECK_DIR")
+    RELATIVE_PATH=$(realpath --relative-to="$BASE_DIR" "$CHECK_DIR" | sed 's|/check$||')
     cat << EOF > "$FILE_PATH"
 [remote]
 "$HIM:$RELATIVE_PATH/1" = []
