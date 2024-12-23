@@ -1,2 +1,1 @@
-a, b = eval(input())
-print(max(a, b))
+print(*sorted(eval(input())), sep=", ")
